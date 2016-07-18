@@ -19,18 +19,23 @@ api = tweepy.API(auth)
 
 
 def main():
-list = api.search(q="rt to win", rpp = 20)
+	list = api.search(q="rt to win", rpp = 2)
 	for tweet in list:
 		if tweet.retweeted == False and tweet.in_reply_to_screen_name == None and checkTweetedAlready(tweet) == False:
-			api.retweet(tweet.id)
-			follow(tweet)
+			#api.retweet(tweet.id)
+			print(tweet.author.screen_name)
+			print(tweet.user.id)
+			print(tweet.in_reply_to_user_id)
+			print(hasattr(tweet,'retweeted_status'))
+			print(tweet.retweeted_status)
+			#api.create_friendship(tweet.user.id)
 		
 		
 #See if this tweet was retweeted within the last 50 tweets
 def checkTweetedAlready(checkTweet):
 	tweetedAlready = False
 	tweetList = api.user_timeline(count = 50, include_rts=True)
-	for each tweet in tweets:
+	for tweet in tweetList:
 		if tweet.text == checkTweet.text:
 			tweetedAlready = True
 			break
@@ -40,27 +45,39 @@ def checkTweetedAlready(checkTweet):
 	
 
 
-def follow(tweet):
-	isFollowing = false
-	friendslist = api.friends_ids('Opie_BOT')
-	for following in friendslist:  ##compares already following ideas with user id of who tweeted
-		if following == tweet.user.id:
-			isFollowing = true
-			break
+#def follow(tweet):
+#	isFollowing = False
+#	friendslist = api.friends_ids(config.USERNAME)
+#	for following in friendslist:  ##compares already following ideas with user id of who tweeted
+#		if following == tweet.user.id:
+	#		isFollowing = true
+	#		break
 			
-	if isFollowing == false:
-		api.create_friendship(tweet.user.id)
-		maintainFollowing()
+	#if isFollowing == False:
+	
+	
+	#maintainFollowing()
 
 def maintainFollowing():
 	#keeps followers under 1000 (twitter has a following limit)
-	friendslist = api.friends_ids('Opie_BOT')
-	if  len(friendlist) > 999:
-		lastFollower = friendlist[len(friendlist) - 1]
+	friendslist = api.friends_ids(config.USERNAME)
+	if  len(friendslist) > 999:
+		lastFollower = friendslist[len(friendslist) - 1]
 		api.destroy_friendship(lastFollower)
 
 		
 #to do: implement run function
+
+x = 0
+while x < 2 :
+	
+	main()
+	print(str(datetime.now()))
+	print("Sleeping for 300s...")
+	##
+	print(" ")
+	x = x +1
+
 			
 		
 	
