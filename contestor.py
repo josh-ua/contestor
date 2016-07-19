@@ -21,16 +21,13 @@ api = tweepy.API(auth)
 def main():
 	list = api.search(q="rt to win", rpp = 2)
 	for tweet in list:
-		if tweet.retweeted == False and tweet.in_reply_to_screen_name == None and checkTweetedAlready(tweet) == False:
-			#api.retweet(tweet.id)
-			print(tweet.author.screen_name)
-			print(tweet.user.id)
-			print(tweet.in_reply_to_user_id)
-			print(hasattr(tweet,'retweeted_status'))
-			print(tweet.retweeted_status)
-			#api.create_friendship(tweet.user.id)
-		
-		
+		if tweet.in_reply_to_screen_name == None and checkTweetedAlready(tweet) == False:
+			api.retweet(tweet.id)
+			if (hasattr(tweet,'retweeted_status') = True):
+				api.create_friendship(tweet.retweeted_status.author.id)
+			else:
+				api.create_friendship(tweet.author.screen_name)
+				
 #See if this tweet was retweeted within the last 50 tweets
 def checkTweetedAlready(checkTweet):
 	tweetedAlready = False
