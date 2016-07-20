@@ -1,6 +1,6 @@
 
 
-#Imports - config has auth keys
+#Imports - config has auth keys and userinfo
 from datetime import datetime
 import tweepy, time, config
 
@@ -18,62 +18,79 @@ auth.set_access_token(ACCESS_TOKEN, ACCESS_SECRET)
 api = tweepy.API(auth)
 
 
+searchList = ["rt to win", "retweet giveaway", "retweet win"]
+
 def main():
-	list = api.search(q="rt to win", rpp = 2)
-	for tweet in list:
-		if tweet.in_reply_to_screen_name == None and checkTweetedAlready(tweet) == False:
-			api.retweet(tweet.id)
-			if (hasattr(tweet,'retweeted_status') = True):
-				api.create_friendship(tweet.retweeted_status.author.id)
-			else:
-				api.create_friendship(tweet.author.screen_name)
-				
-#See if this tweet was retweeted within the last 50 tweets
-def checkTweetedAlready(checkTweet):
-	tweetedAlready = False
-	tweetList = api.user_timeline(count = 50, include_rts=True)
-	for tweet in tweetList:
-		if tweet.text == checkTweet.text:
-			tweetedAlready = True
-			break
-	return tweetedAlready
-		
-
+	tweetedCount = 0
+	notTweetedCount = 0
+	for searchTerm in searchList:
+		list = api.search(q=searchTerm, rpp = 50)
+		for tweet in list:
+			if tweet.in_reply_to_screen_name == None:
+				try:
+					api.retweet(tweet.id)
+					likeThis(tweet)
+					tweetedCount = tweetedCount + 1
+					
+					if (hasattr(tweet,'retweeted_status') == True): ##if a retweet, follow original tweeter
+						follow(tweet.retweeted_status.author.id)
+					else:
+						follow(tweet.author.screen_name)
+				except:
+					notTweetedCount = notTweetedCount + 1
+					continue
+	print (str(tweetedCount) + " tweets tweeted.")
+	
+	
+#Checks to see if the text in the tweet has the terms "like", "favorite", or "favourite" (for my British tweeters). 
+#If so, the tweet will be favorited. Some giveaways require this.
+def likeThis(tweet):
+	likeList = ["like", "favorite", "favourite", "fav"]
+	tweetText = (tweet.text).lower() ##lowercase so find function always works no matter the case (good work around ;))
+	for term in likeList:
+		if term in tweetText:
+			api.create_favorite(tweet.id)
+		else:
+			continue
 	
 
 
-#def follow(tweet):
-#	isFollowing = False
-#	friendslist = api.friends_ids(config.USERNAME)
-#	for following in friendslist:  ##compares already following ideas with user id of who tweeted
-#		if following == tweet.user.id:
-	#		isFollowing = true
-	#		break
-			
-	#if isFollowing == False:
-	
-	
-	#maintainFollowing()
 
+
+
+#Some contents do a "retweet, follow me and @xxxx to win!" format. To account for this, this function parses the tweet.
+#If another @[username] is found, they will be followed as well.
+#TODO--
+	
+	
+	
+#Follows user
+def follow(authorID):
+	try:
+		api.create_friendship(authorID)
+		maintainFollowing()
+	except:
+		return ##already followed 
+	
+
+#Maintains followers (twitter has some following/follower ratio limit). This keeps the following from going over 1000.
 def maintainFollowing():
-	#keeps followers under 1000 (twitter has a following limit)
+
 	friendslist = api.friends_ids(config.USERNAME)
 	if  len(friendslist) > 999:
 		lastFollower = friendslist[len(friendslist) - 1]
 		api.destroy_friendship(lastFollower)
 
 		
-#to do: implement run function
 
-x = 0
-while x < 2 :
-	
+
+while True :	
 	main()
 	print(str(datetime.now()))
-	print("Sleeping for 300s...")
-	##
+	print("Sleeping for 180s...")
+	time.sleep(180)
 	print(" ")
-	x = x +1
+
 
 			
 		
@@ -84,16 +101,8 @@ while x < 2 :
 
 	
 ###garbage:	
-#n = "\n"
-#nb = str.encode(n)
-
-
-#tweetIDs = [ ] 
-#for x in range(0, len(list)-1):
 #	output.write(list[x].text.encode("utf-8"))
-#	output.write(nb)
-#	tweetIDs.insert(0, list[x].id)
-	
+
 
 
 
