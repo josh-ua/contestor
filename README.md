@@ -3,7 +3,7 @@ contestor is a bot that enters twitter competitions. Built with python, he striv
 
 ##what it does
 
-contestor pulls the latest tweets with some fancy search terms geared towards giveaways, retweets them and then follows the original tweeter. Also, if the world "like" or "favorite" or some variaiton is mentioned in the tweet, contestor will also like/favorite the tweet. The goal here is to enter as many twitter competitions as possible.
+contestor pulls the latest tweets with some fancy search terms geared towards giveaways. Then it retweets them and then follows the original tweeter. Also, if the world "like" or "favorite" or some variaiton is mentioned in the tweet, contestor will also like/favorite the tweet. The goal here is to enter as many twitter competitions as possible.
 
 ##how to run it
 
@@ -12,4 +12,4 @@ Get the repo, fill out the sample config file with your twitter information, and
 ###to do:
 * tweet random things every once and a while (pull topics from trending topics)
 * implement checkForMoreFollowing function
-* WORK ON TIMING
+* if the string "vote" is in the tweet, skip it.
