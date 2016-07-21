@@ -14,3 +14,7 @@ Get the repo, fill out the sample config file with your twitter information, and
 * implement checkForMoreFollowing function
 * if the string "vote" is in the tweet, skip it.
 * implement a "delete all DM's" script (or ones that have been marked as read)
+
+
+###stats:
+I've been running the bot full time since 7/20/2016. So far I've won 1 contest.
