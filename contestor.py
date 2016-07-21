@@ -40,6 +40,7 @@ def main():
 					notTweetedCount = notTweetedCount + 1
 					continue
 	print (str(tweetedCount) + " tweets tweeted.")
+	print (str(notTweetedCount) + " tweets NOT tweeted."
 	
 	
 #Checks to see if the text in the tweet has the terms "like", "favorite", or "favourite" (for my British tweeters). 
