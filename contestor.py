@@ -62,23 +62,16 @@ def likeThis(tweet):
 
 #Some contents do a "retweet, follow me and @xxxx to win!" format. To account for this, this function parses the tweet.
 #If another @[username] is found, they will be followed as well.
-#TODO--
+#TODO-
 
-#def checkForFollow(tweet):
-#
-#words = tweet.text.split()
-#
-#toFollow = []
-#for word in words:
-#        if word.find('@') == 0:
-#                toFollow.append(word)
+def checkForFollow(tweet):
+words = tweet.text.split()
+for word in words:
+        if word.find('@') == 0:
+                follow(word.replace('@',"""))
 
 
-                
 
-	
-	
-	
 #Follows user
 def follow(authorID):
 	try:
