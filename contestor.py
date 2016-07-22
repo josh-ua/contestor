@@ -1,13 +1,14 @@
 
 
+
 #Imports - config has auth keys and userinfo
 from datetime import datetime
 import tweepy, time, config
 
 
 
-
 #Imported from config.py (hidden from git)
+#auth stuff
 CONSUMER_KEY = config.CONSUMER_KEY
 CONSUMER_SECRET = config.CONSUMER_SECRET
 ACCESS_TOKEN = 	config.ACCESS_TOKEN
@@ -18,8 +19,8 @@ auth.set_access_token(ACCESS_TOKEN, ACCESS_SECRET)
 api = tweepy.API(auth)
 
 
-searchList = ["rt to win", "retweet giveaway", "retweet win"]
 
+searchList = ["rt to win", "retweet giveaway", "retweet win"]
 def main():
 	tweetedCount = 0
 	notTweetedCount = 0
@@ -44,6 +45,7 @@ def main():
 	print (str(notTweetedCount) + " tweets NOT tweeted.")
 	
 	
+	
 #Checks to see if the text in the tweet has the terms "like", "favorite", or "favourite" (for my British tweeters). 
 #If so, the tweet will be favorited. Some giveaways require this.
 def likeThis(tweet):
@@ -54,44 +56,39 @@ def likeThis(tweet):
 			api.create_favorite(tweet.id)
 		else:
 			continue
-	
-
-
-
-
-
+			
+			
+			
 #Some contents do a "retweet, follow me and @xxxx to win!" format. To account for this, this function parses the tweet.
 #If another @[username] is found, they will be followed as well.
-#TODO-
-
+#TODO- needs to be tested
 def checkForFollow(tweet):
 words = tweet.text.split()
 for word in words:
         if word.find('@') == 0:
                 follow(word.replace('@',"""))
-
-
-
+				
+				
+				
 #Follows user
 def follow(authorID):
 	try:
 		api.create_friendship(authorID)
 		maintainFollowing()
 	except:
-		return ##already followed 
+		return ##already followed
+		
 	
 
 #Maintains followers (twitter has some following/follower ratio limit). This keeps the following from going over 1000.
 def maintainFollowing():
-
 	friendslist = api.friends_ids(config.USERNAME)
 	if  len(friendslist) > 1999:
 		lastFollower = friendslist[len(friendslist) - 1]
 		api.destroy_friendship(lastFollower)
-
 		
-
-
+		
+#Runs function every 2 minutes.
 while True :	
 	main()
 	print(str(datetime.now()))
@@ -102,9 +99,6 @@ while True :
 
 			
 		
-	
-
-	
 	
 
 	
