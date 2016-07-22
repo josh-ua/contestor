@@ -1,5 +1,5 @@
 # contestor
-contestor is a bot that enters twitter competitions. Built with python, he strives to be the very best. Still a work in progress, although the base functions do work.
+contestor is a bot that enters twitter competitions. Built with python 3.5 and the Tweepy API. 
 
 ##what it does
 
@@ -14,7 +14,6 @@ contestor pulls the latest tweets with some fancy search terms geared towards gi
 
 
 ##how to run it
-
 Get the repo, fill out the sample config file with your twitter information, and run contestor.py. The scripts in the scripts directory are not needed to run, but may be useful to you.
 
 ###to do:
