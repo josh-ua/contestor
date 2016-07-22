@@ -92,7 +92,7 @@ def follow(authorID):
 def maintainFollowing():
 
 	friendslist = api.friends_ids(config.USERNAME)
-	if  len(friendslist) > 999:
+	if  len(friendslist) > 1999:
 		lastFollower = friendslist[len(friendslist) - 1]
 		api.destroy_friendship(lastFollower)
 
