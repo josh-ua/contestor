@@ -63,10 +63,11 @@ def likeThis(tweet):
 #If another @[username] is found, they will be followed as well.
 #TODO- needs to be tested
 def checkForFollow(tweet):
-words = tweet.text.split()
-for word in words:
-        if word.find('@') == 0:
-                follow(word.replace('@',"""))
+	words = tweet.text.split()
+	for word in words:
+			if word.find('@') == 0:
+					follow(word.replace('@',""))
+
 				
 				
 				
@@ -83,7 +84,7 @@ def follow(authorID):
 #Maintains followers (twitter has some following/follower ratio limit). This keeps the following from going over 1000.
 def maintainFollowing():
 	friendslist = api.friends_ids(config.USERNAME)
-	if  len(friendslist) > 1999:
+	if  len(friendslist) > 1500:
 		lastFollower = friendslist[len(friendslist) - 1]
 		api.destroy_friendship(lastFollower)
 		
@@ -92,8 +93,8 @@ def maintainFollowing():
 while True :	
 	main()
 	print(str(datetime.now()))
-	print("Sleeping for 180s...")
-	time.sleep(180)
+	print("Sleeping for 300s...")
+	time.sleep(300)
 	print(" ")
 
 
