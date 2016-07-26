@@ -1,13 +1,14 @@
 
 
+
 #Imports - config has auth keys and userinfo
 from datetime import datetime
 import tweepy, time, config
 
 
 
-
 #Imported from config.py (hidden from git)
+#auth stuff
 CONSUMER_KEY = config.CONSUMER_KEY
 CONSUMER_SECRET = config.CONSUMER_SECRET
 ACCESS_TOKEN = 	config.ACCESS_TOKEN
@@ -18,8 +19,8 @@ auth.set_access_token(ACCESS_TOKEN, ACCESS_SECRET)
 api = tweepy.API(auth)
 
 
-searchList = ["rt to win", "retweet giveaway", "retweet win"]
 
+searchList = ["rt to win", "retweet giveaway", "retweet win"]
 def main():
 	tweetedCount = 0
 	notTweetedCount = 0
@@ -30,18 +31,21 @@ def main():
 				try:
 					api.retweet(tweet.id)
 					likeThis(tweet)
+					checkForFollow(tweet)
 					tweetedCount = tweetedCount + 1
-					
+			
 					if (hasattr(tweet,'retweeted_status') == True): ##if a retweet, follow original tweeter
 						follow(tweet.retweeted_status.author.id)
 					else:
 						follow(tweet.author.screen_name)
+						
 				except:
 					notTweetedCount = notTweetedCount + 1
 					continue
 					
-	print (str(tweetedCount) + " tweets tweeted.")
+	print (str(tweetedCount) + " tweets SUCESSFULLY tweeted.")
 	print (str(notTweetedCount) + " tweets NOT tweeted.")
+	
 	
 	
 #Checks to see if the text in the tweet has the terms "like", "favorite", or "favourite" (for my British tweeters). 
@@ -54,64 +58,50 @@ def likeThis(tweet):
 			api.create_favorite(tweet.id)
 		else:
 			continue
-	
-
-
-
-
-
+			
+			
+			
 #Some contents do a "retweet, follow me and @xxxx to win!" format. To account for this, this function parses the tweet.
 #If another @[username] is found, they will be followed as well.
-#TODO--
+#TODO- needs to be tested
+def checkForFollow(tweet):
+	words = tweet.text.split()
+	for word in words:
+			if word.find('@') == 0:
+					follow(word.replace('@',""))
 
-#def checkForFollow(tweet):
-#
-#words = tweet.text.split()
-#
-#toFollow = []
-#for word in words:
-#        if word.find('@') == 0:
-#                toFollow.append(word)
-
-
-                
-
-	
-	
-	
+				
+				
+				
 #Follows user
 def follow(authorID):
 	try:
 		api.create_friendship(authorID)
 		maintainFollowing()
 	except:
-		return ##already followed 
+		return ##already followed
+		
 	
 
 #Maintains followers (twitter has some following/follower ratio limit). This keeps the following from going over 1000.
 def maintainFollowing():
-
 	friendslist = api.friends_ids(config.USERNAME)
-	if  len(friendslist) > 1999:
+	if  len(friendslist) > 1500:
 		lastFollower = friendslist[len(friendslist) - 1]
 		api.destroy_friendship(lastFollower)
-
 		
-
-
+		
+#Runs function every 2 minutes.
 while True :	
 	main()
 	print(str(datetime.now()))
-	print("Sleeping for 180s...")
-	time.sleep(180)
+	print("Sleeping for 300s...")
+	time.sleep(300)
 	print(" ")
 
 
 			
 		
-	
-
-	
 	
 
 	
