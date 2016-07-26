@@ -23,7 +23,10 @@ Get the repo, fill out the sample config file with your twitter information, and
 * some type of stats tracked
 * make contestor more customizable with a more advanced config.py
 * improve checkForFollow function (need punctuation from handles to be stripped)
+* play with timing for tweets - right now it's at **300s**
+
+*(for more descriptive to do's, check the comments for each respective function in contestor.py)*
 
 
 ###stats:
-Between testing, somewhere around 3,000 tweets have been rewteeted (so around that many contests have been entered) and nothing has been won yet.
+Between testing, somewhere around 3,000 tweets have been rewteeted (so around that many contests have been entered) and nothing has been won yet. Also, one account has been limited (following disabled...)
