@@ -31,17 +31,19 @@ def main():
 				try:
 					api.retweet(tweet.id)
 					likeThis(tweet)
+					checkForFollow(tweet)
 					tweetedCount = tweetedCount + 1
-					
+			
 					if (hasattr(tweet,'retweeted_status') == True): ##if a retweet, follow original tweeter
 						follow(tweet.retweeted_status.author.id)
 					else:
 						follow(tweet.author.screen_name)
+						
 				except:
 					notTweetedCount = notTweetedCount + 1
 					continue
 					
-	print (str(tweetedCount) + " tweets tweeted.")
+	print (str(tweetedCount) + " tweets SUCESSFULLY tweeted.")
 	print (str(notTweetedCount) + " tweets NOT tweeted.")
 	
 	
