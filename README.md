@@ -25,4 +25,4 @@ Get the repo, fill out the sample config file with your twitter information, and
 
 
 ###stats:
-I've been running the bot full time since 7/20/2016. So far I've won 1 contest.
+Between testing, somewhere around 3,000 tweets have been rewteeted (so around that many contests have been entered) and nothing has been won yet.
