@@ -29,4 +29,4 @@ Get the repo, fill out the sample config file with your twitter information, and
 
 
 ###stats:
-Between testing, somewhere around 3,000 tweets have been rewteeted (so around that many contests have been entered) and nothing has been won yet. Also, one account has been limited (following disabled...)
+Between testing, somewhere around 3,000 tweets have been rewteeted (so around that many contests have been entered) and *1* contest has been one. Please see the thingswon.md for a list of things won. Also, one account has been limited (following disabled...).
