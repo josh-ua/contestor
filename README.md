@@ -11,15 +11,16 @@ contestor pulls the latest tweets with some fancy search terms geared towards gi
 * automatic like and favoriting for tweets that require it
 * keeps amount of followers <2000 to avoid follower limit (twitter has a ratio for this - apparantly if you have 0 following, you can only follow 2000 people)
 
-
-
 ##how to run it
 Get the repo, fill out the sample config file with your twitter information, and run contestor.py. The scripts in the scripts directory are not needed to run, but may be useful to you. Their functions are self explanatory from their names.
 
 ###to do:
-* tweet random things every once and a while (pull topics from trending topics)
+major things:
 * only tweet if the tweet has 'retweet' or 'RT' in it
-* implement a "delete all DM's" script (or ones that have been marked as read)
+* only follow if 'follow' is in the tweet
+
+others:
+* tweet random things every once and a while (pull topics from trending topics)
 * some type of stats tracked
 * make contestor more customizable with a more advanced config.py
 * improve checkForFollow function (need punctuation from handles to be stripped)
