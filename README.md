@@ -14,7 +14,7 @@ contestor pulls the latest tweets with some fancy search terms geared towards gi
 
 
 ##how to run it
-Get the repo, fill out the sample config file with your twitter information, and run contestor.py. The scripts in the scripts directory are not needed to run, but may be useful to you.
+Get the repo, fill out the sample config file with your twitter information, and run contestor.py. The scripts in the scripts directory are not needed to run, but may be useful to you. Their functions are self explanatory from their names.
 
 ###to do:
 * tweet random things every once and a while (pull topics from trending topics)
