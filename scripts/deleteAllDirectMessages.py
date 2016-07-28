@@ -12,6 +12,9 @@ auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 auth.set_access_token(ACCESS_TOKEN, ACCESS_SECRET)
 api = tweepy.API(auth)
 
+#####################################################################
+#This script deletes all direct messages the auth user has recieved.#
+#####################################################################
 
 directMessages = api.direct_messages()
 ##Grabs list of DM's
