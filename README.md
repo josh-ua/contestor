@@ -23,7 +23,7 @@ others:
 * tweet random things every once and a while (pull topics from trending topics)
 * some type of stats tracked
 * make contestor more customizable with a more advanced config.py
-* improve checkForFollow function (need punctuation from handles to be stripped)
+* improve checkForFollow function (need punctuation from handles to be stripped) - also issue: stops after following 1 (easy fix)
 * play with timing for tweets - right now it's at **300s**
 
 *(for more descriptive to do's, check the comments for each respective function in contestor.py)*
