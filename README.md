@@ -30,4 +30,4 @@ others:
 
 
 ###stats:
-Between testing, somewhere around 3,000 tweets have been rewteeted (so around that many contests have been entered) and *2* contests have been one. Please see the thingswon.md for a list of things won. Also, one account has been limited (following disabled...).
+Between testing, somewhere around 3,000 tweets have been rewteeted (so around that many contests have been entered) and *3* contests have been one. Please see the thingswon.md for a list of things won. Also, one account has been limited (following disabled...).
