@@ -12,12 +12,11 @@ contestor pulls the latest tweets with some fancy search terms geared towards gi
 * keeps amount of followers <2000 to avoid follower limit (twitter has a ratio for this - apparantly if you have 0 following, you can only follow 2000 people)
 
 ##how to run it
-Get the repo, fill out the sample config file with your twitter information, and run contestor.py. The scripts in the scripts directory are not needed to run, but may be useful to you. Their functions are self explanatory from their names.
+Get the repo, fill out the sample config file with your twitter information, and run contestor.py. The scripts in the scripts directory are not needed to run, but may be useful to you. Their functions are self explanatory from their names. Tweepy is needed to use (pip install tweepy)
 
 ###to do:
 major things:
-* only tweet if the tweet has 'retweet' or 'RT' in it
-* only follow if 'follow' is in the tweet
+* only tweet if the tweet has 'retweet' or 'RT' in it (not sure I want to do this - right now a few normal tweets get through every once in a while - not a bad thing - looks more normal)
 
 others:
 * tweet random things every once and a while (pull topics from trending topics)
