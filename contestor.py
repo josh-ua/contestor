@@ -27,13 +27,15 @@ def main():
 	notTweetedCount = 0
 	for searchTerm in searchList:
 		list = api.search(q=searchTerm, rpp = 50)
+		print ("Searching and tweeting for term: " + searchTerm)
 		for tweet in list:
 			if tweet.in_reply_to_screen_name == None and hasRetweet(tweet) == True:
 				try:
 					api.retweet(tweet.id)
 					likeThis(tweet)
 					shouldFollow(tweet)
-					tweetedCount = tweetedCount + 1					
+					tweetedCount = tweetedCount + 1
+					time.sleep(5)
 				except:
 					notTweetedCount = notTweetedCount + 1
 					continue
