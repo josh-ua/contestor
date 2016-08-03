@@ -3,6 +3,7 @@
 
 #Imports - config has auth keys and userinfo
 from datetime import datetime
+from random import randint
 import tweepy, time, config
 
 
@@ -35,7 +36,7 @@ def main():
 					likeThis(tweet)
 					shouldFollow(tweet)
 					tweetedCount = tweetedCount + 1
-					time.sleep(5)
+					time.sleep(randint(1,10))
 				except:
 					notTweetedCount = notTweetedCount + 1
 					continue
@@ -147,8 +148,9 @@ def maintainFollowing():
 while True :	
 	main()
 	print(str(datetime.now()))
-	print("Sleeping for 300s...")
-	time.sleep(300)
+	timeSleep = randint(240, 360)
+	print("Sleeping for " + str(timeSleep) +"s...")
+	time.sleep(timeSleep)
 	print(" ")
 
 
