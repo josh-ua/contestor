@@ -19,7 +19,7 @@ major things:
 * only tweet if the tweet has 'retweet' or 'RT' in it (not sure I want to do this - right now a few normal tweets get through every once in a while - not a bad thing - looks more normal)
 
 others:
-* tweet random things every once and a while (pull topics from trending topics)
+* tweet random things every once and a while (pull topics from trending topics - this is 80% done and uses cleverbot to comment on those topics)
 * some type of stats tracked
 * make contestor more customizable with a more advanced config.py
 * improve checkForFollow function (need punctuation from handles to be stripped) - also issue: stops after following 1 (easy fix)
