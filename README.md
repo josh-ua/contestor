@@ -21,6 +21,7 @@ major things:
 
 others:
 * tweet random things every once and a while (pull topics from trending topics - this is 80% done and uses cleverbot to comment on those topics)
+* if tweet author has "bot" or "b0t" in it, skip the tweet...there are bot "spotters" on twitter (rude)
 * some type of stats tracked
 * make contestor more customizable with a more advanced config.py
 * improve checkForFollow function (need punctuation from handles to be stripped) - also issue: stops after following 1 (easy fix)
