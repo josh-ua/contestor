@@ -130,7 +130,8 @@ def checkForExtraFollows(tweet):
 def follow(authorID):
 	try:
 		api.create_friendship(authorID)
-		maintainFollowing()
+		if (6 > randint(0, 10)):
+			maintainFollowing()
 	except:
 		return
 
@@ -148,8 +149,7 @@ def maintainFollowing():
 while True :	
 	main()
 	print(str(datetime.now()))
-	timeSleep = randint(240, 360)
-	print("Sleeping for " + str(timeSleep) +"s...")
+	timeSleep = randint(config.REST_TIME1, config.REST_TIME2)
 	time.sleep(timeSleep)
 	print(" ")
 
