@@ -19,7 +19,7 @@ api = tweepy.API(auth)
 directMessages = api.direct_messages()
 ##Grabs list of DM's
 
-if (len(directMessages) = 0): ##check to see if there are any
+if (len(directMessages) == 0): ##check to see if there are any
     print 'You have no direct messages to delete!'
 else: ##cycles through and deletes them
     while (len(directMessages)) > 0:
