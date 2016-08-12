@@ -30,7 +30,7 @@ def main():
 		list = api.search(q=searchTerm, rpp = 50)
 		print ("Searching and tweeting for term: " + searchTerm)
 		for tweet in list:
-			if tweet.in_reply_to_screen_name == None and hasRetweet(tweet) == True:
+			if (tweet.in_reply_to_screen_name == None) and (hasRetweet(tweet) == True) and (isBotSpotter(tweet) == False):
 				try:
 					api.retweet(tweet.id)
 					likeThis(tweet)
@@ -143,7 +143,17 @@ def maintainFollowing():
 	if  len(friendslist) > 1300:
 		lastFollower = friendslist[len(friendslist) - 1]
 		api.destroy_friendship(lastFollower)
-		
+
+def isBotSpotter(tweet):
+	tweetAuthor = (tweet.author.screen_name).lower()
+	botList = ["bot","b0t"]
+	for term in botList:
+		if term in tweetAuthor:
+			return True
+	return False
+
+
+	
 		
 #Runs function every 2 minutes.
 while True :	
