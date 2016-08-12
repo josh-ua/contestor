@@ -9,6 +9,7 @@ contestor pulls the latest tweets with some fancy search terms geared towards gi
 * an intense searching algorithm that decides what to tweet (a little bit of an overstatement)
 * automatic retweet and follow for contest tweets (including tweets that say "also follow @xxxx")
 * automatic like and favoriting for tweets that require it
+* filters out tweets from "botspotters"
 * keeps amount of followers <2000 to avoid follower limit (twitter has a ratio for this - apparantly if you have 0 following, you can only follow 2000 people)
 * randomized resting times
 
@@ -21,7 +22,6 @@ major things:
 
 others:
 * tweet random things every once and a while (pull topics from trending topics - this is 80% done and uses cleverbot to comment on those topics)
-* if tweet author has "bot" or "b0t" in it, skip the tweet...there are bot "spotters" on twitter (rude)
 * some type of stats tracked
 * make contestor more customizable with a more advanced config.py
 * improve checkForFollow function (need punctuation from handles to be stripped) - also issue: stops after following 1 (easy fix)
