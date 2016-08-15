@@ -7,3 +7,8 @@
 * A minecraft account
 * Fee wavier to apply to ESU Gradute School in Kansas
 * A download to an indie band's album before it was released
+* Pokemon go coins
+* Voucher for a free pizza
+* Elite Build Ak47 Skin (CSGO)
+* a tank top
+
