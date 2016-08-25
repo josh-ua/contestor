@@ -25,7 +25,7 @@ others:
 * some type of stats tracked
 * make contestor more customizable with a more advanced config.py
 * improve checkForFollow function (need punctuation from handles to be stripped) - also issue: stops after following 1 (easy fix)
-* play with timing for tweets - right now it's at **240 to 360 seconds**
+* play with timing for tweets - you can help by setting your own settings in the config.py
 
 *(for more descriptive to do's, check the comments for each respective function in contestor.py)*
 
