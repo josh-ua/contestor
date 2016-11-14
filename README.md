@@ -17,18 +17,15 @@ contestor pulls the latest tweets with some fancy search terms geared towards gi
 Get the repo, fill out the sample config file with your twitter information, and run contestor.py. The scripts in the scripts directory are not needed to run, but may be useful to you. Their functions are self explanatory from their names. Tweepy is needed to use (pip install tweepy)
 
 ###to do:
-major things:
-* only tweet if the tweet has 'retweet' or 'RT' in it (not sure I want to do this - right now a few normal tweets get through every once in a while - not a bad thing - looks more normal)
 
 others:
 * tweet random things every once and a while (pull topics from trending topics - this is 80% done and uses cleverbot to comment on those topics)
 * some type of stats tracked
 * make contestor more customizable with a more advanced config.py
-* improve checkForFollow function (need punctuation from handles to be stripped) - also issue: stops after following 1 (easy fix)
 * play with timing for tweets - you can help by setting your own settings in the config.py
 
 *(for more descriptive to do's, check the comments for each respective function in contestor.py)*
 
 
 ###stats:
-Between testing, somewhere around 20,000 tweets have been rewteeted (so around that many contests have been entered) and *13* contests have been one. Please see the thingswon.md for a list of things won. Also, one account has been limited (following disabled...).
+Between testing, somewhere around 20,000 tweets have been rewteeted (so around that many contests have been entered) and *16* contests have been won. Please see the thingswon.md for a list of things won. Also, one account has been limited (following disabled...).
